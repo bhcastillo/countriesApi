@@ -1,9 +1,8 @@
-import { Router } from "express";
-import { HealthController } from "../controllers/health";
+import { Router }              from 'express'
+import { CountriesController } from '../controllers/country'
 
-export const countriesRouter:Router = Router()
-
+export const countriesRouter: Router = Router()
 
 countriesRouter
-  .route('/health')
-  .get(HealthController.getHealth)
+  .route('/country')
+  .get(CountriesController.getCountry)

@@ -1,8 +1,7 @@
-import { Request, Response } from "express"
+import { Request, Response } from 'express'
 
 export class HealthController {
-  static getHealth = (_:Request, res:Response)=>{
-
-    return res.status(200).json("OK")
+  static getHealth = async (_: Request, res: Response): Promise<Response> => {
+    return res.status(200).json('OK')
   }
 }
