@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Check Day of the Week
         id: check_day
-        run: echo "::set-output name=day::$(date +'%A')"
+      run: echo "DAY=$(date +'%A')" >> $GITHUB_ENV
 
       - name: Restrict Push on Fridays
-        if: steps.check_day.outputs.day == 'Friday'
+      if: env.DAY == 'Friday'
         run: |
           echo "Pushing code on Fridays is not allowed!"
           exit 1
