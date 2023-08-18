@@ -1,0 +1,20 @@
+name: No Push on Fridays
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  check_push_day:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Day of the Week
+        id: check_day
+        run: echo "::set-output name=day::$(date +'%A')"
+
+      - name: Restrict Push on Fridays
+        if: steps.check_day.outputs.day == 'Friday'
+        run: |
+          echo "Pushing code on Fridays is not allowed!"
+          exit 1
